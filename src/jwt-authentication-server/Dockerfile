@@ -1,3 +1,4 @@
+# docker build -t olivernybo/leviathan-jwt-authentication-server .
 FROM node:14
 
 WORKDIR /usr/src/app

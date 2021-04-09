@@ -1,4 +1,3 @@
-// docker build -t olivernybo/leviathan-jwt-authentication-server .
 const jwt = require('jsonwebtoken')
 const express = require('express')
 const app = express()
