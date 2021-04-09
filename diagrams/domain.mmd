@@ -3,7 +3,8 @@ graph TD
 	dbh([Datebase Handler])
 	dbcache([Database Caching Server])
 	web([Website])
-	admin([Admin])
+	jwt[JWT Authentication Server]
+	admin[Admin]
 	api[API]
 	cronmanager[Cron Manager]
 	cronjob[[Cron Job]]
@@ -12,7 +13,10 @@ graph TD
 
 	web-->dbcache
 	web-->admin
+	web-.->|has login route|jwt
+	admin-.-|requires token|jwt
 	admin-.->|implements|api
+	jwt-->dbcache
 	api-.-|can manage|cronmanager
 	api-.-|can manage|appmanager
 	cronmanager-->dbcache
