@@ -1,5 +1,5 @@
 # Leviathan
-Leviathan is a platform for me to deploy applications and cron jobs with ease. It will be built with containers in mind for, so the platform can be scalable.
+Leviathan is a platform for me to deploy applications and cron jobs with ease. It will be built with containers in mind, so the platform can be scalable.
 
 # Diagrams
 All diagrams are made with [mermaid](https://mermaid-js.github.io/mermaid/#/).
