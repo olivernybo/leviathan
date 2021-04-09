@@ -3,14 +3,18 @@ graph TD
 	dbh([Datebase Handler])
 	dbcache([Database Caching Server])
 	web([Website])
+	admin([Admin])
+	api[API]
 	cronmanager[Cron Manager]
 	cronjob[[Cron Job]]
 	appmanager[App Manager]
 	app[[Application]]
 
 	web-->dbcache
-	web-.-|can manage|cronmanager
-	web-.-|can manage|appmanager
+	web-->admin
+	admin-.->|implements|api
+	api-.-|can manage|cronmanager
+	api-.-|can manage|appmanager
 	cronmanager-->dbcache
 	cronmanager-->cronjob
 	cronjob-->dbcache
