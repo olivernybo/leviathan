@@ -29,3 +29,6 @@ The website will hold a frontend for my public projects, other than that, it wil
 
 ## JWT Authentication Server
 This server will handle all authentication for Leviathan with the industry standard [RFC 7519](https://jwt.io/) protocol.
+
+## Leviathan
+Leviathan is the "administration" page for all my future needs. It will have a dedicated API that will communicate the Cron and App Manager.
