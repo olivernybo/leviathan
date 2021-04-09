@@ -26,3 +26,6 @@ In this section, I will be describing all the modules and what their purpose for
 
 ## Website
 The website will hold a frontend for my public projects, other than that, it will hold frontend for Leviathan itself.
+
+## JWT Authentication Server
+This server will handle all authentication for Leviathan with the industry standard [RFC 7519](https://jwt.io/) protocol.
