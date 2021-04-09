@@ -4,18 +4,18 @@ graph TD
 	dbcache([Database Caching Server])
 	web([Website])
 	jwt[JWT Authentication Server]
-	admin[Admin]
-	api[API]
+	leviathan[Leviathan]
+	api[Leviathan API]
 	cronmanager[Cron Manager]
 	cronjob[[Cron Job]]
 	appmanager[App Manager]
 	app[[Application]]
 
 	web-->dbcache
-	web-.->|requires JWT token|admin
+	web-.->|requires JWT token|leviathan
 	web-->|has login route|jwt
-	admin-.-|verifies token|jwt
-	admin-.->|implements|api
+	leviathan-.-|verifies token|jwt
+	leviathan-.->|implements|api
 	jwt-->dbcache
 	api-.-|can manage|cronmanager
 	api-.-|can manage|appmanager
