@@ -20,3 +20,9 @@ The primary technology that will be used is [Docker](https://www.docker.com/). T
 > To implement the scalability, I will most likely either use [Docker Swarm](https://docs.docker.com/engine/swarm/) or [Kubernetes](https://kubernetes.io/). Both are yet to be researched, so a final conclusion has not been made.
 
 These was my initial thoughts. I have now concluded the project will use Kubernetes, because support for Docker Swarm will come to a halt in the comming years.
+
+# Modules
+In this section, I will be describing all the modules and what their purpose for the project is.
+
+## Website
+The website will hold a frontend for my public projects, other than that, it will hold frontend for Leviathan itself.
