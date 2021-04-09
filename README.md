@@ -37,4 +37,4 @@ Leviathan is the "administration" page for all my future needs. It will have a d
 The Cron and App Managers job is to handle the management of the Cron Jobs and Applications. The tasks will include booting, deletion, activation, deactivation and whatever else I come up with.
 
 ## Database Caching Server
-This servers responsibility is to cache data that is frequantly used.
+This servers responsibility is to cache data that is frequently used.
