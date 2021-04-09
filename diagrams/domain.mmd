@@ -12,7 +12,7 @@ graph TD
 	app[[Application]]
 
 	web-->dbcache
-	web-.->|requires jwt token|admin
+	web-.->|requires JWT token|admin
 	web-->|has login route|jwt
 	admin-.-|verifies token|jwt
 	admin-.->|implements|api
