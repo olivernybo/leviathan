@@ -24,14 +24,14 @@ app.post('/generate', (req, res) => {
 	}
 })
 
-app.get('/verify', (req, res) => {
+app.post('/verify', (req, res) => {
 	res.setHeader('Content-Type', 'application/json')
 	if (req.body.token) {
 		jwt.verify(req.body.token, 'secret', (err, decoded) => {
 			if (err) {
 				res.statusCode = 401
 				res.end(JSON.stringify({ message: 'invalid token' }))
-			} else if (validUserToken(req.body.token)) {
+			} else if (validUserToken(decoded.data)) {
 				res.statusCode = 200
 				res.end(JSON.stringify({ message: 'valid token' }))
 			} else {
