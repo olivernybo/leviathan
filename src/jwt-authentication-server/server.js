@@ -12,7 +12,7 @@ app.post('/generate', (req, res) => {
 		if (validUser(name, pass)) {
 			res.statusCode = 200
 			res.end(JSON.stringify({ key: jwt.sign({
-				data: name
+				data: getUserToken(name)
 			}, 'secret', { expiresIn: '1h' }) }))
 		} else {
 			res.statusCode = 401
@@ -24,8 +24,37 @@ app.post('/generate', (req, res) => {
 	}
 })
 
+app.get('/verify', (req, res) => {
+	res.setHeader('Content-Type', 'application/json')
+	if (req.body.token) {
+		jwt.verify(req.body.token, 'secret', (err, decoded) => {
+			if (err) {
+				res.statusCode = 401
+				res.end(JSON.stringify({ message: 'invalid token' }))
+			} else if (validUserToken(req.body.token)) {
+				res.statusCode = 200
+				res.end(JSON.stringify({ message: 'valid token' }))
+			} else {
+				res.statusCode = 401
+				res.end(JSON.stringify({ message: 'invalid token' }))
+			}
+		})
+	} else {
+		res.statusCode = 400
+		res.end(JSON.stringify({ message: 'missing token' }))
+	}
+})
+
 function validUser(name, pass) {
 	return name == 'leviathan' && pass == '1234'
+}
+
+function getUserToken(name) {
+	return name
+}
+
+function validUserToken(token) {
+	return token == 'leviathan'
 }
 
 app.listen(3000)
