@@ -57,4 +57,4 @@ function validUserToken(token) {
 	return token == 'leviathan'
 }
 
-app.listen(3000)
+app.listen(3000, () => console.log('JWT Authentication Server started'))
