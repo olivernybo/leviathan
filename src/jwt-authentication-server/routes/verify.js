@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken'
 import { validUserToken } from '../user.js'
 
 export default (req, res) => {
-	res.setHeader('Content-Type', 'application/json')
 	if (req.body.token) {
 		jwt.verify(req.body.token, 'secret', (err, decoded) => {
 			if (err) {
