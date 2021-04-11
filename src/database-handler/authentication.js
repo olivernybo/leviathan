@@ -17,6 +17,7 @@ export default (req, res, next) => {
 			for (const leviathanModule of Object.entries(apiKeys)) {
 				if (leviathanModule[1] === apiKey) {
 					// todo log module: leviathanModule[0]
+					console.info(`${new Date().toISOString().slice(0, -5).replace('T', ' ')}: ${leviathanModule[0]} API key used`)
 					valid = true
 					break
 				}
