@@ -1,0 +1,14 @@
+{
+  "name": "database-handler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "redis": "^3.1.0"
+  }
+}
