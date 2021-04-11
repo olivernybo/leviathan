@@ -8,6 +8,11 @@ export default (req, res, next) => {
 		res.end(JSON.stringify({ message: 'No API key given' }))
 	} else {
 		client.hgetall('api-key', (err, apiKeys) => {
+			if (err) {
+				res.statusCode = 500
+				res.end(JSON.stringify({ error: err }))
+				return
+			}
 			let valid = false
 			for (const leviathanModule of Object.entries(apiKeys)) {
 				if (leviathanModule[1] === apiKey) {
