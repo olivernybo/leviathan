@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {},
   "keywords": [],
-  "author": "",
+  "author": "Oliver Nybo",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
