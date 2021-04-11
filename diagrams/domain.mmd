@@ -1,7 +1,6 @@
 graph TD
 	db[(Database)]
 	dbh([Datebase Handler])
-	dbcache([Database Caching Server])
 	web([Website])
 	jwt[JWT Authentication Server]
 	leviathan[Leviathan]
@@ -11,19 +10,18 @@ graph TD
 	appmanager[App Manager]
 	app[[Application]]
 
-	web-->dbcache
+	web-->dbh
 	web-.->|requires JWT token|leviathan
 	web-->|has login route|jwt
 	leviathan-.-|verifies token|jwt
 	leviathan-.->|implements|api
-	jwt-->dbcache
+	jwt-->dbh
 	api-.-|can manage|cronmanager
 	api-.-|can manage|appmanager
-	cronmanager-->dbcache
+	cronmanager-->dbh
 	cronmanager-->cronjob
-	cronjob-->dbcache
-	appmanager-->dbcache
+	cronjob-->dbh
+	appmanager-->dbh
 	appmanager-->app
-	app-->dbcache
-	dbcache-->dbh
+	app-->dbh
 	dbh-->db
