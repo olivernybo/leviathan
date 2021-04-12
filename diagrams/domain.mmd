@@ -25,7 +25,7 @@ graph TD
 	web-->dbh
 	web-.->|requires JWT token|leviathan
 	web-.->|has login route|jwt
-	leviathan-.-|verifies token|jwt
+	leviathan-.->|verifies token|jwt
 	leviathan-.->|implements|api
 	jwt-->dbh
 	api-.-|can manage|cronmanager
