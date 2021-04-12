@@ -4,11 +4,15 @@ import { JWT_SECRET } from '../environment.js'
 
 export default (req, res) => {
 	if (req.body.token) {
-		jwt.verify(req.body.token, JWT_SECRET, (err, decoded) => {
+		jwt.verify(req.body.token, JWT_SECRET, async (err, decoded) => {
 			if (err) {
 				res.statusCode = 401
 				res.end(JSON.stringify({ message: 'invalid token' }))
-			} else if (validUserToken(decoded.data.name, decoded.data.token)) {
+				return
+			}
+			
+			const validToken = await validUserToken(decoded.data.name, decoded.data.token)
+			if (validToken) {
 				res.statusCode = 200
 				res.end(JSON.stringify({ message: 'valid token' }))
 			} else {

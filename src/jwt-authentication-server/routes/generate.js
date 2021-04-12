@@ -2,10 +2,10 @@ import jwt from 'jsonwebtoken'
 import { getUserToken } from '../user.js'
 import { JWT_SECRET } from '../environment.js'
 
-export default (req, res) => {
+export default async (req, res) => {
 	const { name, password } = req.body
 	if (name && password) {
-		const validToken = getUserToken(name, password)
+		const validToken = await getUserToken(name, password)
 		if (validToken) {
 			res.statusCode = 200
 			res.end(JSON.stringify({ key: jwt.sign({
