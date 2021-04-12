@@ -16,6 +16,18 @@ Rounded nodes indicates they are scalable.
 ## Domain
 ![](diagrams/domain.png)
 
+The modules are colored in the way that red modules are yet to be worked on, green modules are in progress, and no color is finished.
+
+---
+
+This diagram consists of 3 groups, UI, System and Data.
+
+The UI group will be what the user sees, but it will also include minimal logic in the form of a sign in feature.
+
+All the other logic modules are in the System group. These modules consists mostly of API's, but there are also other low level system modules.
+
+For all the data that will horde up in all the modules, the Data group will manage all of it.
+
 # Technologies
 The primary technology that will be used is [Docker](https://www.docker.com/). This will allow me to create all the modules (nodes) independently and with their own technology.
 
