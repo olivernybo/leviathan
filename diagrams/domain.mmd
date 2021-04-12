@@ -1,22 +1,25 @@
 graph TD
+	classDef TODO fill:#800000;
+	classDef IN_PROGRESS fill:#006400;
+
 	subgraph data [Data]
 	db[(Database)]
-	session[(Session)]
-	dbh([Datebase Handler])
+	session[(Session)]:::TODO
+	dbh([Datebase Handler]):::IN_PROGRESS
 	end
 
 	subgraph ui [UI]
-	web([Website])
-	leviathan[Leviathan]
+	web([Website]):::TODO
+	leviathan[Leviathan]:::TODO
 	end
 
 	subgraph system [System]
 	jwt[JWT Authentication Server]
-	api[Leviathan API]
-	cronmanager[Cron Manager]
-	cronjob[[Cron Job]]
-	appmanager[App Manager]
-	app[[Application]]
+	api[Leviathan API]:::TODO
+	cronmanager[Cron Manager]:::TODO
+	cronjob[[Cron Job]]:::TODO
+	appmanager[App Manager]:::TODO
+	app[[Application]]:::TODO
 	end
 
 	web-->dbh
