@@ -1,6 +1,8 @@
 # Leviathan
 Leviathan is a platform for me to deploy applications and cron jobs with ease. It will be built with containers in mind, so the platform can be scalable.
 
+I've taken a lot of inspiration from [Devon Crawford](https://www.youtube.com/channel/UCDrekHmOnkptxq3gUU0IyfA), especially [this video](https://www.youtube.com/watch?v=SC7lLm6QAb8).
+
 # Diagrams
 All diagrams are made with [mermaid](https://mermaid-js.github.io/mermaid/#/).
 
