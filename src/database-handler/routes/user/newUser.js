@@ -1,4 +1,5 @@
 import client from '../../client.js'
+import { generateKey } from '../../utils.js'
 
 export default (req, res) => {
 	client.hgetall(`user:${req.body.name}`, (err, user) => {
@@ -9,7 +10,8 @@ export default (req, res) => {
 		}
 		if (!user) {
 			client.hmset(`user:${req.body.name}`, {
-				password: req.body.password
+				password: req.body.password,
+				token: generateKey()
 			}, (err, redisResponse) => {
 				if (err) {
 					res.statusCode = 500
