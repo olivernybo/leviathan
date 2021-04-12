@@ -8,7 +8,7 @@ All diagrams are made with [mermaid](https://mermaid-js.github.io/mermaid/#/).
 
 Command for generating mermaid images:
 ```bat
-mmdc -t dark -b #0d1117 -i inputfile.mmd -o outputfile.png
+mmdc -t dark -b #0d1117 -s 5 -i inputfile.mmd -o outputfile.png
 ```
 
 ## Domain
