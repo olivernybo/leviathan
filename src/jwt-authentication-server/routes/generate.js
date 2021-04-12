@@ -1,14 +1,15 @@
 import jwt from 'jsonwebtoken'
-import { validUser, getUserToken } from '../user.js'
+import { getUserToken } from '../user.js'
 import { JWT_SECRET } from '../environment.js'
 
 export default (req, res) => {
 	const { name, password } = req.body
 	if (name && password) {
-		if (validUser(name, password)) {
+		const validToken = getUserToken(name, password)
+		if (validToken) {
 			res.statusCode = 200
 			res.end(JSON.stringify({ key: jwt.sign({
-				data: getUserToken(name)
+				data: { name,  token: validToken }
 			}, JWT_SECRET, { expiresIn: '1h' }) }))
 		} else {
 			res.statusCode = 401

@@ -1,11 +1,15 @@
-export function validUser(name, pass) {
-	return name == 'leviathan' && pass == '1234'
+import fetch from 'node-fetch'
+
+export async function getUserToken(name, pass) {
+	const userInfo = await fetch(`http://localhost:5000/user/${name}`)
+	if (!userInfo || !userInfo.password || !userInfo.token) return null 
+
+	return pass === userInfo.password ? userInfo.token : null
 }
 
-export function getUserToken(name) {
-	return name
-}
+export async function validUserToken(name, token) {
+	const userInfo = await fetch(`http://localhost:5000/user/${name}`)
+	if (!userInfo || !userInfo.token) return false
 
-export function validUserToken(token) {
-	return token == 'leviathan'
+	return token === userInfo.token
 }

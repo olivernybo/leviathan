@@ -8,7 +8,7 @@ export default (req, res) => {
 			if (err) {
 				res.statusCode = 401
 				res.end(JSON.stringify({ message: 'invalid token' }))
-			} else if (validUserToken(decoded.data)) {
+			} else if (validUserToken(decoded.data.name, decoded.data.token)) {
 				res.statusCode = 200
 				res.end(JSON.stringify({ message: 'valid token' }))
 			} else {
