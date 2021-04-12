@@ -1,14 +1,23 @@
 graph TD
+	subgraph data [Data]
 	db[(Database)]
+	session[(Session)]
 	dbh([Datebase Handler])
+	end
+
+	subgraph ui [UI]
 	web([Website])
-	jwt[JWT Authentication Server]
 	leviathan[Leviathan]
+	end
+
+	subgraph system [System]
+	jwt[JWT Authentication Server]
 	api[Leviathan API]
 	cronmanager[Cron Manager]
 	cronjob[[Cron Job]]
 	appmanager[App Manager]
 	app[[Application]]
+	end
 
 	web-->dbh
 	web-.->|requires JWT token|leviathan
@@ -24,4 +33,6 @@ graph TD
 	appmanager-->dbh
 	appmanager-->app
 	app-->dbh
+	leviathan---->session
+	web-->session
 	dbh-->db
