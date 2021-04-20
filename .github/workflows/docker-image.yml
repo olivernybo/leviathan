@@ -29,12 +29,13 @@ jobs:
       
     - name: Build Website
       run: |
-        npm install
-        ng build --prod
+        npm ci
+        npm run build --prod
         docker build --no-cache -t olivernybo/leviathan/website:stable .
       working-directory: src/website
       
   push:
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
