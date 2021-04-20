@@ -32,11 +32,6 @@ jobs:
       working-directory: src/website
     - run: docker build --no-cache -t olivernybo/leviathan/website:stable .
       working-directory: src/website
-      
-  push:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
 
     - name: Push Database Handler
       run: docker push olivernybo/leviathan/database-handler:stable
