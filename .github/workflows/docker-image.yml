@@ -8,18 +8,7 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    - steps:
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-
-    - name: Compile Website
-    - run: npm install
-      working-directory: src/website
-    - run: ng build --prod
-      working-directory: src/website
-
-    - steps:
+    steps:
     - uses: actions/checkout@v2
         
     - name: Login to DockerHub Registry
@@ -33,8 +22,14 @@ jobs:
       run: docker build --no-cache -t olivernybo/leviathan/jwt-authentication-server:stable .
       working-directory: src/jwt-authentication-server
       
-    - name: Build Website
-      run: docker build --no-cache -t olivernybo/leviathan/website:stable .
+    - name: Build Webs
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'ite
+      run: |
+        npm install
+        ng build --prod
+        docker build --no-cache -t olivernybo/leviathan/website:stable .
       working-directory: src/website
       
   push:
