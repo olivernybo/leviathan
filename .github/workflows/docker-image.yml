@@ -9,10 +9,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
       with:
         node-version: '14'
+
+    - name: Compile Website
+    - run: npm install
+      working-directory: src/website
+    - run: ng build --prod
+      working-directory: src/website
+
+    - uses: actions/checkout@v2
         
     - name: Login to DockerHub Registry
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
@@ -26,12 +33,13 @@ jobs:
       working-directory: src/jwt-authentication-server
       
     - name: Build Website
-    - run: npm install
+      run: docker build --no-cache -t olivernybo/leviathan/website:stable .
       working-directory: src/website
-    - run: ng build --prod
-      working-directory: src/website
-    - run: docker build --no-cache -t olivernybo/leviathan/website:stable .
-      working-directory: src/website
+      
+  push:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
 
     - name: Push Database Handler
       run: docker push olivernybo/leviathan/database-handler:stable
