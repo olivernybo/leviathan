@@ -20,25 +20,25 @@ jobs:
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login registry.gitlab.com -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
       
     - name: Build Database Handler
-      run: docker build --no-cache -t olivernybo/leviathan/database-handler:stable .
+      run: docker build --no-cache -t registry.gitlab.com/olivernybo/leviathan/database-handler:stable .
       working-directory: src/database-handler
       
     - name: Build JWT Authentication Server
-      run: docker build --no-cache -t olivernybo/leviathan/jwt-authentication-server:stable .
+      run: docker build --no-cache -t registry.gitlab.com/olivernybo/leviathan/jwt-authentication-server:stable .
       working-directory: src/jwt-authentication-server
       
     - name: Build Website
       run: |
         npm ci
-        npm run build --prod
-        docker build --no-cache -t olivernybo/leviathan/website:stable .
+        npm run build
+        docker build --no-cache -t registry.gitlab.com/olivernybo/leviathan/website:stable .
       working-directory: src/website
 
     - name: Push Database Handler
-      run: docker push olivernybo/leviathan/database-handler:stable
+      run: docker push registry.gitlab.com/olivernybo/leviathan/database-handler:stable
       
     - name: Push JWT Authentication Server
-      run: docker push olivernybo/leviathan/jwt-authentication-server:stable
+      run: docker push registry.gitlab.com/olivernybo/leviathan/jwt-authentication-server:stable
       
     - name: Push Website
-      run: docker push olivernybo/leviathan/website:stable
+      run: docker push registry.gitlab.com/olivernybo/leviathan/website:stable
