@@ -7,8 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class LinkComponent implements OnInit {
 	pathname: string;
-	@Input() href: string
-	@Input() text: string
+	@Input() href: string;
+	@Input() text: string;
 	constructor() {}
 
 	ngOnInit(): void {
