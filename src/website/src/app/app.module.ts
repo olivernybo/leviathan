@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +19,7 @@ import { FormComponent } from './pages/contact/form/form.component';
 		ContactComponent,
 		FormComponent,
 	],
-	imports: [BrowserModule, AppRoutingModule],
+	imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
 	providers: [],
 	bootstrap: [AppComponent],
 })
