@@ -6,9 +6,16 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './global/navbar/navbar.component';
 import { FooterComponent } from './global/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 @NgModule({
-	declarations: [AppComponent, NavbarComponent, FooterComponent, HomeComponent],
+	declarations: [
+		AppComponent,
+		NavbarComponent,
+		FooterComponent,
+		HomeComponent,
+		ContactComponent,
+	],
 	imports: [BrowserModule, AppRoutingModule],
 	providers: [],
 	bootstrap: [AppComponent],
