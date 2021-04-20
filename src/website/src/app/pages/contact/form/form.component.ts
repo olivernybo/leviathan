@@ -18,7 +18,7 @@ export class FormComponent implements OnInit {
 
 	constructor(private fb: FormBuilder) {}
 
-	onSubmit = () => alert(this.contactForm.status)
+	onSubmit = () => alert(this.contactForm.status);
 
 	ngOnInit(): void {}
 }
