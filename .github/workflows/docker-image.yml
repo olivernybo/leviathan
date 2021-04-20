@@ -7,22 +7,42 @@ on:
 jobs:
 
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+        
     - name: Login to DockerHub Registry
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+      
     - name: Build Database Handler
-      run: docker build --no-cache -t olivernybo/leviathan/database-handler:stable src/database-handler
+      run: docker build --no-cache -t olivernybo/leviathan/database-handler:stable .
+      working-directory: src/database-handler
+      
     - name: Build JWT Authentication Server
-      run: docker build --no-cache -t olivernybo/leviathan/jwt-authentication-server:stable src/jwt-authentication-server
+      run: docker build --no-cache -t olivernybo/leviathan/jwt-authentication-server:stable .
+      working-directory: src/jwt-authentication-server
+      
     - name: Build Website
-      run: docker build --no-cache -t olivernybo/leviathan/website:stable src/website
+    - run: npm install
+      working-directory: src/website
+    - run: ng build --prod
+      working-directory: src/website
+    - run: docker build --no-cache -t olivernybo/leviathan/website:stable .
+      working-directory: src/website
+      
+  push:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
     - name: Push Database Handler
       run: docker push olivernybo/leviathan/database-handler:stable
+      
     - name: Push JWT Authentication Server
       run: docker push olivernybo/leviathan/jwt-authentication-server:stable
+      
     - name: Push Website
       run: docker push olivernybo/leviathan/website:stable
