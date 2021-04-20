@@ -12,11 +12,13 @@ export class FormComponent implements OnInit {
 			firstName: ['', Validators.required],
 			lastName: ['', Validators.required],
 		}),
-		email: ['', Validators.required],
+		email: ['', [Validators.required, Validators.email]],
 		message: ['', Validators.required],
 	});
 
 	constructor(private fb: FormBuilder) {}
+
+	onSubmit = () => alert(this.contactForm.status)
 
 	ngOnInit(): void {}
 }
