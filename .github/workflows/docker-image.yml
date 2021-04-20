@@ -17,7 +17,7 @@ jobs:
         node-version: '14'
 
     - name: Login to DockerHub Registry
-      run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+      run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login registry.gitlab.com -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
       
     - name: Build Database Handler
       run: docker build --no-cache -t olivernybo/leviathan/database-handler:stable .
