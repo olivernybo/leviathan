@@ -5,7 +5,17 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/src/jwt-authentication-server" # Location of package manifests
+  - package-ecosystem: npm # See documentation for possible values
+    directory: /src/database-handler # Location of package manifests
     schedule:
-      interval: "daily"
+      interval: daily
+
+  - package-ecosystem: npm # See documentation for possible values
+    directory: /src/jwt-authentication-server # Location of package manifests
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm # See documentation for possible values
+    directory: /src/website # Location of package manifests
+    schedule:
+      interval: daily
