@@ -1,4 +1,4 @@
-# docker build --no-cache -t olivernybo/leviathan-jwt-authentication-server .
+# docker build --no-cache -t olivernybo/leviathan/jwt-authentication-server .
 FROM node:14
 
 WORKDIR /usr/src/app
