@@ -1,0 +1,28 @@
+name: Docker Image CI
+
+on:
+  release:
+    types: [ published ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Login to DockerHub Registry
+      run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+    - name: Build Database Handler
+      run: docker build --no-cache -t olivernybo/leviathan/database-handler:stable src/database-handler
+    - name: Build JWT Authentication Server
+      run: docker build --no-cache -t olivernybo/leviathan/jwt-authentication-server:stable src/jwt-authentication-server
+    - name: Build Website
+      run: docker build --no-cache -t olivernybo/leviathan/website:stable src/website
+    - name: Push Database Handler
+      run: docker push olivernybo/leviathan/database-handler:stable
+    - name: Push JWT Authentication Server
+      run: docker push olivernybo/leviathan/jwt-authentication-server:stable
+    - name: Push Website
+      run: docker push olivernybo/leviathan/website:stable
