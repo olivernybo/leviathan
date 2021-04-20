@@ -1,0 +1,10 @@
+@import '../styles/vars.scss';
+
+footer {
+	background-color: $bootstrapDark;
+	color: #fff;
+
+	.link {
+		color: $linkColor;
+	}
+}
