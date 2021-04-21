@@ -7,24 +7,13 @@
 			"projectType": "application",
 			"schematics": {
 				"@schematics/angular:component": {
-					"style": "scss",
-					"lintFix": true
+					"style": "scss"
 				},
-				"@schematics/angular:class": {
-					"lintFix": true
-				},
-				"@schematics/angular:directive": {
-					"lintFix": true
-				},
-				"@schematics/angular:module": {
-					"lintFix": true
-				},
-				"@schematics/angular:pipe": {
-					"lintFix": true
-				},
-				"@schematics/angular:service": {
-					"lintFix": true
-				}
+				"@schematics/angular:class": {},
+				"@schematics/angular:directive": {},
+				"@schematics/angular:module": {},
+				"@schematics/angular:pipe": {},
+				"@schematics/angular:service": {}
 			},
 			"root": "",
 			"sourceRoot": "src",
