@@ -23,9 +23,9 @@ graph TD
 	end
 
 	web-->dbh
-	web-.->|requires JWT token|leviathan
-	web-.->|has login route|jwt
-	leviathan-.->|verifies token|jwt
+	web-.->|can redirect|leviathan
+	leviathan-.->|has login route|jwt
+	leviathan-.->|verifies JWT token|jwt
 	leviathan-.->|implements|api
 	jwt-->dbh
 	api-.-|can manage|cronmanager
@@ -37,5 +37,4 @@ graph TD
 	appmanager-->app
 	app-->dbh
 	leviathan-->session
-	web-->session
 	dbh-->db
