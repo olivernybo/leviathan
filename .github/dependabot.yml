@@ -14,8 +14,3 @@ updates:
     directory: /src/jwt-authentication-server # Location of package manifests
     schedule:
       interval: daily
-
-  - package-ecosystem: npm # See documentation for possible values
-    directory: /src/website # Location of package manifests
-    schedule:
-      interval: daily
