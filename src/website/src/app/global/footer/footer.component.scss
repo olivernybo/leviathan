@@ -8,4 +8,11 @@ footer {
 	.link {
 		color: $linkColor;
 	}
+
+	app-navbar {
+		display: none;
+		@media (min-width: 768px) {
+			display: block;
+		}
+	}
 }
