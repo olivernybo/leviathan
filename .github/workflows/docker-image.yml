@@ -16,7 +16,7 @@ jobs:
       with:
         node-version: '14'
 
-    - name: Login to DockerHub Registry
+    - name: Login to Container Registry
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login registry.gitlab.com -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
       
     - name: Build Database Handler
@@ -33,6 +33,10 @@ jobs:
         npm run build
         docker build --no-cache -t registry.gitlab.com/olivernybo/leviathan/website:stable .
       working-directory: src/website
+      
+    - name: Build Website API
+      run: docker build --no-cache -t registry.gitlab.com/olivernybo/leviathan/website-api:stable .
+      working-directory: src/website-api
 
     - name: Push Database Handler
       run: docker push registry.gitlab.com/olivernybo/leviathan/database-handler:stable
@@ -42,3 +46,6 @@ jobs:
       
     - name: Push Website
       run: docker push registry.gitlab.com/olivernybo/leviathan/website:stable
+      
+    - name: Push Website API
+      run: docker push registry.gitlab.com/olivernybo/leviathan/website-api:stable
