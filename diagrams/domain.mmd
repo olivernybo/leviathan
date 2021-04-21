@@ -15,7 +15,7 @@ graph TD
 
 	subgraph system [System]
 	jwt[JWT Authentication Server]
-	webapi[Website API]:::TODO
+	webapi([Website API]):::TODO
 	levapi[Leviathan API]:::TODO
 	cronmanager[Cron Manager]:::TODO
 	cronjob[[Cron Job]]:::TODO
@@ -25,11 +25,12 @@ graph TD
 
 	web-.->|implements|webapi
 	web-.->|can redirect to|leviathan
+	webapi-->dbh
+	webapi-->session
 	leviathan-.->|has login route|jwt
 	leviathan-.->|verifies JWT token|jwt
 	leviathan-.->|implements|levapi
 	jwt-->dbh
-	webapi-->dbh
 	levapi-.-|can manage|cronmanager
 	levapi-.-|can manage|appmanager
 	cronmanager-->dbh
@@ -38,5 +39,4 @@ graph TD
 	appmanager-->dbh
 	appmanager-->app
 	app-->dbh
-	leviathan-->session
 	dbh-->db
