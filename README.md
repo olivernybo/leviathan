@@ -16,7 +16,7 @@ mmdc -t dark -b #0d1117 -s 5 -i inputfile.mmd -o outputfile.png
 
 If a module (node) has rounded corners, it indicates it is scalable.
 
-The modules are colored in the way that red modules are yet to be worked on, green modules are in progress, and no color is finished.
+The modules are colored in the way that red modules are yet to be worked on, orange modules are in progress, and no color is finished.
 
 ---
 
