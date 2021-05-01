@@ -55,7 +55,8 @@ This servers responsibility is to handle requests to the database and cache data
 
 Initially my plan was to have a dedicated database handler and caching server, but after learning more about [Redis](https://redis.io/), I've decided to merge the two modules into a single module.
 
-Command for Redis node:
+Command for Redis nodes:
 ```bash
-docker run --name leviathan-redis -p 6379:6379 -d redis redis-server --appendonly yes       
+docker run --name leviathan-redis -p 6379:6379 -d redis redis-server --appendonly yes
+docker run --name leviathan-session-redis -p 6380:6379 -d redis redis-server --appendonly yes
 ```
