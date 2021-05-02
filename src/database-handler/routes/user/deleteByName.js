@@ -4,16 +4,17 @@ export default (req, res) => {
 	client.hgetall(`user:${req.params.name}`, (err, user) => {
 		if (err) {
 			res.statusCode = 500
-			res.end(JSON.stringify({ error: err }))
+			res.json({ error: err }, true)
 			return
 		}
 		if (user) {
 			client.del(`user:${req.params.name}`, (err, redisResponse) => {
-				res.end(JSON.stringify({ message: redisResponse }))
+				// todo handle err
+				res.json({ message: redisResponse }, true)
 			})
 		} else {
 			res.statusCode = 400
-			res.end(JSON.stringify({ error: 'user does not exists' }))
+			res.json({ error: 'user does not exists' }, true)
 		}
 	})
 }

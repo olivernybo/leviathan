@@ -5,7 +5,7 @@ export default (req, res) => {
 	client.hgetall(`user:${req.body.name}`, (err, user) => {
 		if (err) {
 			res.statusCode = 500
-			res.end(JSON.stringify({ error: err }))
+			res.json({ error: err }, true)
 			return
 		}
 		if (!user) {
@@ -15,14 +15,14 @@ export default (req, res) => {
 			}, (err, redisResponse) => {
 				if (err) {
 					res.statusCode = 500
-					res.end(JSON.stringify({ error: err }))
+					res.json({ error: err }, true)
 					return
 				}
-				res.end(JSON.stringify({ message: redisResponse }))
+				res.json({ message: redisResponse }, true)
 			})
 		} else {
 			res.statusCode = 400
-			res.end(JSON.stringify({ error: 'user already exists' }))
+			res.json({ error: 'user already exists' }, true)
 		}
 	})
 }

@@ -6,13 +6,13 @@ export default (req, res) => {
 	client.hgetall('api-key', (err, apiKeys) => {
 		if (err) {
 			res.statusCode = 500
-			res.end(JSON.stringify({ error: err }))
+			res.json({ error: err }, true)
 			return
 		}
 		for (const moduleName of Object.keys(apiKeys)) {
 			if (moduleName === name) {
 				res.statusCode = 400
-				res.end(JSON.stringify({ message: 'Name already exists' }))
+				res.json({ message: 'Name already exists' }, true)
 				return
 			}
 		}
@@ -21,10 +21,10 @@ export default (req, res) => {
 		client.hmset('api-key', name, newKey, (err, redisResponse) => {
 			if (err) {
 				res.statusCode = 500
-				res.end(JSON.stringify({ error: err }))
+				res.json({ error: err }, true)
 				return
 			}
-			res.end(JSON.stringify({ message: redisResponse, key: newKey }))
+			res.json({ message: redisResponse, key: newKey }, true)
 		})
 	})
 }

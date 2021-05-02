@@ -5,12 +5,12 @@ export default (req, res, next) => {
 	const apiKey = req.header('api-key')
 	if (!apiKey) {
 		res.statusCode = 400
-		res.end(JSON.stringify({ message: 'No API key given' }))
+		res.json({ message: 'No API key given' }, true)
 	} else {
 		client.hgetall('api-key', (err, apiKeys) => {
 			if (err) {
 				res.statusCode = 500
-				res.end(JSON.stringify({ error: err }))
+				res.json({ error: err }, true)
 				return
 			}
 			let valid = false
@@ -24,7 +24,7 @@ export default (req, res, next) => {
 			}
 			if (!valid) {
 				res.statusCode = 401
-				res.end(JSON.stringify({ message: 'Invalid API key' }))
+				res.json({ message: 'Invalid API key' }, true)
 			} else next()
 		})
 	}

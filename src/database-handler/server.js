@@ -1,13 +1,14 @@
-import express from 'express'
-import { jsonHeader } from './middleware.js'
+import express, { json } from 'express'
+import { jsonHeader, jsonResponse } from './middleware.js'
 import authentication from './authentication.js'
 import userRouter from './routes/user/router.js'
 import apiKeyRouter from './routes/api-key/router.js'
 
 const app = express()
 
-app.use(express.json())
+app.use(json())
 app.use(jsonHeader)
+app.use(jsonResponse)
 app.use(authentication)
 
 app.use('/user', userRouter)
