@@ -7,21 +7,21 @@ export default (req, res) => {
 		jwt.verify(req.body.token, JWT_SECRET, async (err, decoded) => {
 			if (err) {
 				res.statusCode = 401
-				res.end(JSON.stringify({ message: 'invalid token' }))
+				res.json({ message: 'invalid token' }, true)
 				return
 			}
 			
 			const validToken = await validUserToken(decoded.data.name, decoded.data.token)
 			if (validToken) {
 				res.statusCode = 200
-				res.end(JSON.stringify({ message: 'valid token' }))
+				res.json({ message: 'valid token' }, true)
 			} else {
 				res.statusCode = 401
-				res.end(JSON.stringify({ message: 'invalid token' }))
+				res.json({ message: 'invalid token' }, true)
 			}
 		})
 	} else {
 		res.statusCode = 400
-		res.end(JSON.stringify({ message: 'missing token' }))
+		res.json({ message: 'missing token' }, true)
 	}
 }

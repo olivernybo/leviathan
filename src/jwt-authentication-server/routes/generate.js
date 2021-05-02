@@ -8,15 +8,17 @@ export default async (req, res) => {
 		const validToken = await getUserToken(name, password)
 		if (validToken) {
 			res.statusCode = 200
-			res.end(JSON.stringify({ key: jwt.sign({
-				data: { name,  token: validToken }
-			}, JWT_SECRET, { expiresIn: '1h' }) }))
+			res.json({
+				key: jwt.sign({
+					data: { name,  token: validToken }
+				}, JWT_SECRET, { expiresIn: '1h' })
+			}, true)
 		} else {
 			res.statusCode = 401
-			res.end(JSON.stringify({ message: 'invalid credentials' }))
+			res.json({ message: 'invalid credentials' }, true)
 		}
 	} else {
 		res.statusCode = 400
-		res.end(JSON.stringify({ message: 'missing credentials' }))
+		res.json({ message: 'missing credentials' }, true)
 	}
 }
