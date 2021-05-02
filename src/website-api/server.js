@@ -3,7 +3,7 @@ import session from 'express-session'
 import redis from 'redis'
 import connectRedis from 'connect-redis'
 
-import { jsonResponse } from './middleware.js'
+import { jsonHeader } from './middleware.js'
 
 import devRouter from './routes/dev/router.js' // ! not suitable for prouduction
 import contactRouter from './routes/contact/router.js'
@@ -17,7 +17,7 @@ const client = redis.createClient({
 client.on('error', err => console.log(err))
 
 app.use(json())
-app.use(jsonResponse)
+app.use(jsonHeader)
 app.use(session({
 	secret: 'password',
 	name: 'web_api_session',
