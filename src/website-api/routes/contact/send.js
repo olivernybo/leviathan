@@ -2,7 +2,7 @@ const senders = {} // TODO find a way to use redis session, maybe timestamps
 
 export default (req, res) => {
 	if (senders[req.sessionID]) {
-		res.end('no')
+		res.json({ message: 'no' }, true)
 		return
 	}
 	console.log(req.body) // TODO save to db
@@ -10,5 +10,5 @@ export default (req, res) => {
 	setTimeout(() => {
 		delete senders[req.sessionID]
 	}, 5000)
-	res.end('ok')
+	res.json({ message: 'ok' }, true)
 }
