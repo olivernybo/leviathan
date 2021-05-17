@@ -1,14 +1,12 @@
-const senders = {} // TODO find a way to use redis session, maybe timestamps
+const COOLDOWN_TIME_MS = 5000
 
 export default (req, res) => {
-	if (senders[req.sessionID]) {
+	const now = new Date().getTime()
+	if (req.session.contactedAt && new Date(req.session.contactedAt).getTime() + COOLDOWN_TIME_MS > now) {
 		res.json({ message: 'no' }, true)
 		return
 	}
 	console.log(req.body) // TODO save to db
-	senders[req.sessionID] = req.body
-	setTimeout(() => {
-		delete senders[req.sessionID]
-	}, 5000)
+	req.session.contactedAt = now
 	res.json({ message: 'ok' }, true)
 }
