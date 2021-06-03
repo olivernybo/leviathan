@@ -1,0 +1,10 @@
+@import './global/styles/vars.scss';
+
+#particles-js {
+	background-color: $bootstrapDark;
+	min-height: 500px;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: -1;
+}
