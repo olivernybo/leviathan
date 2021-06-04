@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import swal from 'sweetalert2'; 
 
 @Component({
 	selector: 'app-contact-form',
@@ -18,7 +19,17 @@ export class FormComponent implements OnInit {
 
 	constructor(private fb: FormBuilder) {}
 
-	onSubmit = () => alert(this.contactForm.status);
+	onSubmit(): void {
+		if (this.contactForm.valid) {
+			// todo send to api
+			swal.fire({
+				title: 'Message sent!',
+				text: 'I\'ll get back to you as soon as possible!',
+				confirmButtonColor: '#0062cc'
+			})
+			this.contactForm.reset()
+		}
+	}
 
 	ngOnInit(): void {}
 }

@@ -3,21 +3,57 @@
 		<div class="form-group col-md-6">
 			<label for="firstName">First Name</label>
 			<input type="text" class="form-control" formControlName="firstName" />
+			<div *ngIf="contactForm.get('name').get('firstName').invalid && 
+				contactForm.get('name').get('firstName').errors && 
+				(contactForm.get('name').get('firstName').dirty || contactForm.get('name').get('firstName').touched)">
+				<small class="text-danger"
+					*ngIf="contactForm.get('name').get('firstName').hasError('required')">
+					This field is required.
+				</small>
+			</div>
 		</div>
 		<div class="form-group col-md-6">
 			<label for="lastName">Last Name</label>
 			<input type="text" class="form-control" formControlName="lastName" />
+			<div *ngIf="contactForm.get('name').get('lastName').invalid && 
+				contactForm.get('name').get('lastName').errors && 
+				(contactForm.get('name').get('lastName').dirty || contactForm.get('name').get('lastName').touched)">
+				<small class="text-danger"
+					*ngIf="contactForm.get('name').get('lastName').hasError('required')">
+					This field is required.
+				</small>
+			</div>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="email">Email</label>
 		<input type="email" class="form-control" formControlName="email" />
+		<div *ngIf="contactForm.get('email').invalid && 
+			contactForm.get('email').errors && 
+			(contactForm.get('email').dirty || contactForm.get('email').touched)">
+			<small class="text-danger"
+				*ngIf="contactForm.get('email').hasError('required')">
+				This field is required.
+			</small>
+			<small class="text-danger"
+				*ngIf="contactForm.get('email').hasError('email')">
+				This field must be a valid email.
+			</small>
+		</div>
 	</div>
 	<div class="form-group">
 		<label for="message">Message</label>
 		<textarea class="form-control" formControlName="message"></textarea>
+		<div *ngIf="contactForm.get('message').invalid && 
+			contactForm.get('message').errors && 
+			(contactForm.get('message').dirty || contactForm.get('message').touched)">
+			<small class="text-danger"
+				*ngIf="contactForm.get('message').hasError('required')">
+				This field is required.
+			</small>
+		</div>
 	</div>
-	<button type="submit" class="btn btn-primary col-12" (click)="onSubmit()">
+	<button type="submit" class="btn btn-primary col-12" (click)="onSubmit()" [disabled]="contactForm.invalid">
 		Send
 	</button>
 </form>
