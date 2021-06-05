@@ -12,6 +12,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { FormComponent } from './pages/contact/form/form.component';
 import { LinkComponent } from './global/navbar/link/link.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
+import { ProjectComponent } from './pages/projects/project/project.component';
 
 @NgModule({
 	declarations: [
@@ -23,6 +24,7 @@ import { ProjectsComponent } from './pages/projects/projects.component';
 		FormComponent,
 		LinkComponent,
 		ProjectsComponent,
+		ProjectComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, SweetAlert2Module],
 	providers: [],
