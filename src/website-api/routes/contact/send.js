@@ -1,11 +1,12 @@
 import fetch from 'node-fetch'
 import { DB_API_KEY } from '../../environment.js'
 
-const COOLDOWN_TIME_MS = 5000
+const COOLDOWN_TIME_MS = 20000
 
 export default async (req, res) => {
 	const now = new Date().getTime()
 	if (req.session.contactedAt && new Date(req.session.contactedAt).getTime() + COOLDOWN_TIME_MS > now) {
+		res.statusCode = 429
 		res.json({ message: 'no' }, true)
 		return
 	}

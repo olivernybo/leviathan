@@ -1,4 +1,5 @@
 import express, { json } from 'express'
+import cors from 'cors'
 import session from 'express-session'
 import redis from 'redis'
 import connectRedis from 'connect-redis'
@@ -16,6 +17,10 @@ const client = redis.createClient({
 
 client.on('error', err => console.log(err))
 
+app.use(cors({
+	origin: 'http://localhost:4200',
+	credentials: true
+}))
 app.use(json())
 app.use(jsonHeader)
 app.use(jsonResponse)
@@ -23,7 +28,7 @@ app.use(session({
 	secret: 'password',
 	name: 'web_api_session',
 	resave: false,
-	saveUninitialized: false,
+	saveUninitialized: true,
 	cookie: {
 		secure: false
 	},
