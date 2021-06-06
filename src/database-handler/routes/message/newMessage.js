@@ -7,7 +7,7 @@ export default (req, res) => {
 	
 	if (
 		!name || !name.firstName || !name.lastName
-		|| !email || typeof email !== 'string' || !email.length || !email.contains('@')
+		|| !email || typeof email !== 'string' || !email.length || !email.includes('@')
 		|| !message || typeof message !== 'string' || !message.length
 	) {
 		res.statusCode = 400

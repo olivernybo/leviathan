@@ -6,7 +6,7 @@ export default (req, res) => {
 	if (
 		! message || typeof message !== 'object'
 		|| !message.name || !message.name.firstName || !message.name.lastName
-		|| !message.email || typeof message.email !== 'string' || !message.email.length || !message.email.contains('@')
+		|| !message.email || typeof message.email !== 'string' || !message.email.length || !message.email.includes('@')
 		|| !message.message || typeof message.message !== 'string' || !message.message.length
 	) {
 		res.statusCode = 400
