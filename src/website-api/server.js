@@ -28,7 +28,7 @@ app.use(session({
 	secret: 'password',
 	name: 'web_api_session',
 	resave: false,
-	saveUninitialized: true,
+	saveUninitialized: false,
 	cookie: {
 		secure: false
 	},
