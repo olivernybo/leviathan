@@ -10,8 +10,20 @@ export default async (req, res) => {
 		res.json({ message: 'no' }, true)
 		return
 	}
-	console.log(req.body)
-	// todo validation
+	
+	const name = req.body.name
+	const email = req.body.email
+	const message = req.body.message
+	
+	if (
+		!name || !name.firstName || !name.lastName
+		|| !email || typeof email !== 'string' || !email.length || !email.contains('@')
+		|| !message || typeof message !== 'string' || !message.length
+	) {
+		res.statusCode = 400
+		res.json({ error: 'Not a valid message' })
+		return
+	}
 
 	const dbRes = await fetch('http://localhost:5000/message', {
 		headers: {
