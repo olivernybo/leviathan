@@ -5,7 +5,15 @@ export default (req, res) => {
 	const email = req.body.email
 	const message = req.body.message
 	
-	// todo validation
+	if (
+		!name || !name.firstName || !name.lastName
+		|| !email || typeof email !== 'string' || !email.length || !email.contains('@')
+		|| !message || typeof message !== 'string' || !message.length
+	) {
+		res.statusCode = 400
+		res.json({ error: 'Not a valid message' })
+		return
+	}
 	
 	client.rpush('messages', JSON.stringify({ name, email, message }), (err, redisResponse) => {
 		if (err) {
