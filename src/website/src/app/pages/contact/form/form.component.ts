@@ -60,6 +60,13 @@ export class FormComponent implements OnInit {
 						break
 				}
 				this.contactForm.reset()
+			}).catch(() => {
+				swal.fire({
+					title: 'Error',
+					text: 'An error occurred, please try again later.',
+					confirmButtonColor: '#0062cc',
+					icon: 'error'
+				})
 			})
 		}
 	}
