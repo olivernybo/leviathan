@@ -14,6 +14,7 @@ import { InfoComponent } from './pages/contact/info/info.component';
 import { LinkComponent } from './global/navbar/link/link.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { ProjectComponent } from './pages/projects/project/project.component';
+import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({
 	declarations: [
@@ -26,7 +27,8 @@ import { ProjectComponent } from './pages/projects/project/project.component';
 		InfoComponent,
 		LinkComponent,
 		ProjectsComponent,
-		ProjectComponent
+		ProjectComponent,
+		AboutComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, SweetAlert2Module],
 	providers: [],
