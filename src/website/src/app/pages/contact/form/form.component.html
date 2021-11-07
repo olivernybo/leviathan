@@ -53,7 +53,8 @@
 			</small>
 		</div>
 	</div>
-	<button type="submit" class="btn btn-primary col-12" (click)="onSubmit()" [disabled]="contactForm.invalid">
+	<button type="submit" class="btn btn-primary col-12" (click)="onSubmit()" [disabled]="contactForm.invalid || isPending">
+		<span *ngIf="isPending" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
 		Send
 	</button>
 </form>

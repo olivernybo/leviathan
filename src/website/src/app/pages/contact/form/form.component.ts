@@ -8,6 +8,8 @@ import swal from 'sweetalert2';
 	styleUrls: ['./form.component.scss'],
 })
 export class FormComponent implements OnInit {
+	public isPending: boolean = false
+
 	contactForm = this.fb.group({
 		name: this.fb.group({
 			firstName: ['', Validators.required],
@@ -21,13 +23,13 @@ export class FormComponent implements OnInit {
 
 	async onSubmit(): Promise<void> {
 		if (this.contactForm.valid) {
+			this.isPending = true
 			fetch('http://localhost:4000/contact/send', {
 				headers: {
 					'Content-Type': 'application/json'
 				},
 				method: 'post',
 				credentials: 'include',
-
 				body: JSON.stringify(this.contactForm.value)
 			}).then(res => {
 				console.log(res.status)
@@ -67,6 +69,8 @@ export class FormComponent implements OnInit {
 					confirmButtonColor: '#0062cc',
 					icon: 'error'
 				})
+			}).finally(() => {
+				this.isPending = false
 			})
 		}
 	}
