@@ -10,6 +10,7 @@ import { FooterComponent } from './global/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { FormComponent } from './pages/contact/form/form.component';
+import { InfoComponent } from './pages/contact/info/info.component';
 import { LinkComponent } from './global/navbar/link/link.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { ProjectComponent } from './pages/projects/project/project.component';
@@ -22,6 +23,7 @@ import { ProjectComponent } from './pages/projects/project/project.component';
 		HomeComponent,
 		ContactComponent,
 		FormComponent,
+		InfoComponent,
 		LinkComponent,
 		ProjectsComponent,
 		ProjectComponent
