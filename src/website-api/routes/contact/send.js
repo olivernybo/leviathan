@@ -25,15 +25,19 @@ export default async (req, res) => {
 		return
 	}
 
-	const dbRes = await fetch('http://localhost:5000/message', {
+	await fetch('http://localhost:5000/message', {
 		headers: {
 			'Api-Key': DB_API_KEY,
 			'Content-Type': 'application/json'
 		},
 		method: 'post',
 		body: JSON.stringify(req.body)
-	}).then(res => res.json())
-
-	req.session.contactedAt = now
-	res.json(dbRes, true)
+	}).then(res => res.json()).then(dbRes => {
+		req.session.contactedAt = now
+		res.json(dbRes, true)
+	}).catch(err => {
+		console.error(err)
+		res.statusCode = 500
+		res.json({ error: 'Internal server error' })
+	})
 }

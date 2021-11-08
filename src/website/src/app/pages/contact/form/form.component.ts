@@ -59,7 +59,7 @@ export class FormComponent implements OnInit {
 							confirmButtonColor: '#0062cc',
 							icon: 'error'
 						})
-						break
+						return
 				}
 				this.contactForm.reset()
 			}).catch(() => {
