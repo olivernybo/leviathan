@@ -1,0 +1,106 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Authentication server for Leviathan",
+		"description": "This is the authentication server for Leviathan",
+		"version": "1.0.0"
+	},
+	"host": "localhost:3000",
+	"basePath": "/",
+	"schemes": [
+		"http"
+	],
+	"consumes": [
+		"application/json"
+	],
+	"produces": [
+		"application/json"
+	],
+	"paths": {
+		"/generate": {
+			"post": {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "Generate a new authentication token",
+				"description": "Generate a new authentication token",
+				"operationId": "generate",
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"description": "The user to generate a token for",
+						"required": true,
+						"schema": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"password": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "The generated token",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"token": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Missing credentials"
+					},
+					"401": {
+						"description": "Invalid credentials"
+					}
+				}
+			}
+		},
+		"/verify": {
+			"post": {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "Verify a token",
+				"description": "Verify a token",
+				"operationId": "verify",
+				"parameters": [
+					{
+						"name": "token",
+						"in": "body",
+						"description": "The token to verify",
+						"required": true,
+						"schema": {
+							"type": "object",
+							"properties": {
+								"token": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Valid token"
+					},
+					"400": {
+						"description": "Missing token"
+					},
+					"401": {
+						"description": "Invalid token"
+					}
+				}
+			}
+		}
+	}
+}
