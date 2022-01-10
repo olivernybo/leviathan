@@ -1,5 +1,9 @@
 import client from '../../client.js'
 
+/**
+ * Delete a message.
+ * @todo Implement id parameter instead of the exact message.
+ */
 export default (req, res) => {
 	const message = req.body.message
 	
