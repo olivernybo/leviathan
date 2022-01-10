@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "scripts": {},
+  "scripts": {
+	  "backup": "docker-compose exec database "
+  },
   "keywords": [],
   "author": "Oliver Nybo",
   "license": "ISC",
