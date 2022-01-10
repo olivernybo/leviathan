@@ -5,7 +5,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-	"backup": "docker-compose -f ../database.yaml -p leviathan exec redis redis-cli SAVE; mkdir ../backup; cp ../data/redis/dump.rdb ../backup/dump.$(date +%F_%R).rdb"
+    "backup": "docker-compose -f ../database.yaml -p leviathan exec redis redis-cli SAVE; mkdir ../backup; cp ../data/redis/dump.rdb ../backup/dump.$(date +%F_%R).rdb"
   },
   "keywords": [],
   "author": "Oliver Nybo",
