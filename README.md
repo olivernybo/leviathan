@@ -12,7 +12,7 @@ mmdc -t dark -b #0d1117 -s 5 -i inputfile.mmd -o outputfile.png
 ```
 
 ## Domain
-![](diagrams/domain.png)
+![](documentation/diagrams/domain.png)
 
 If a module (node) has rounded corners, it indicates it is scalable.
 
