@@ -1,0 +1,13 @@
+# docker-compose -f swagger.yaml -p leviathan up
+version: '3.0'
+services:
+  swagger:
+    image: swaggerapi/swagger-ui
+    ports:
+      - 8080:8080
+    volumes:
+      - ./specs:/specs
+    container_name: swagger
+    environment:
+      - SWAGGER_JSON=/specs/database-handler.json
+      - SWAGGER_BASE_PATH=/specs

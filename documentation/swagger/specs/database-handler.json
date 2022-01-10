@@ -1,0 +1,67 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Database handler for Leviathan",
+		"description": "This is a database handler for Leviathan",
+		"version": "1.0.0"
+	},
+	"host": "localhost:5000",
+	"basePath": "/",
+	"schemes": [
+		"http"
+	],
+	"consumes": [
+		"application/json"
+	],
+	"produces": [
+		"application/json"
+	],
+	"securityDefinitions": {
+		"API Key": {
+			"type": "apiKey",
+			"name": "api-key",
+			"in": "header"
+		}
+	},
+	"security": [
+		{
+			"API Key": []
+		}
+	],
+	"paths": {
+		"api-key": {
+			"get": {
+				"tags": [
+					"API Key"
+				],
+				"summary": "Get all API Keys",
+				"description": "Get all API Keys",
+				"operationId": "getAllApiKeys",
+				"responses": {
+					"200": {
+						"description": "Successful operation",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ApiKey"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"ApiKey": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"key": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}
