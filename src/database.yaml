@@ -6,7 +6,7 @@ services:
     ports:
       - 6379:6379
     volumes:
-      - ./data/redis:/data
+      - ./data/database:/data
     container_name: database
   session:
     image: redis
