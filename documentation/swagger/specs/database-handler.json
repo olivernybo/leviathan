@@ -29,7 +29,7 @@
 		}
 	],
 	"paths": {
-		"api-key": {
+		"/api-key": {
 			"get": {
 				"tags": [
 					"API Key"
@@ -46,6 +46,52 @@
 								"$ref": "#/definitions/ApiKey"
 							}
 						}
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"API Key"
+				],
+				"summary": "Create a new API Key",
+				"description": "Create a new API Key",
+				"operationId": "createApiKey",
+				"parameters": [
+					{
+						"name": "name",
+						"in": "body",
+						"description": "Name of the API Key to create",
+						"required": true,
+						"schema": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful operation",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"message": {
+									"type": "string"
+								},
+								"key": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Name already exists"
+					},
+					"500": {
+						"description": "Internal Server Error"
 					}
 				}
 			}
