@@ -41,9 +41,12 @@
 					"200": {
 						"description": "Successful operation",
 						"schema": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/ApiKey"
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string",
+									"example": "key"
+								}
 							}
 						}
 					}
@@ -98,16 +101,5 @@
 		}
 	},
 	"definitions": {
-		"ApiKey": {
-			"type": "object",
-			"properties": {
-				"name": {
-					"type": "string"
-				},
-				"key": {
-					"type": "string"
-				}
-			}
-		}
 	}
 }

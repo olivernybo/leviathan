@@ -16,12 +16,10 @@ export default (req, res) => {
 			return
 		}
 		// If the module name already exists, return an error
-		for (const moduleName of Object.keys(apiKeys)) {
-			if (moduleName === name) {
-				res.statusCode = 400
-				res.json({ message: 'Name already exists' }, true)
-				return
-			}
+		if (apiKeys && apiKeys[name]) {
+			res.statusCode = 400
+			res.json({ message: 'Name already exists' }, true)
+			return
 		}
 		
 		// Generate a new API key
