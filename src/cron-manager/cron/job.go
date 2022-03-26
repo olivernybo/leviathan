@@ -10,10 +10,11 @@ type Job struct {
 	Result JobResult
 }
 
-type JobResult byte
+type JobResult uint16
 
 const (
-	Failure JobResult = iota
+	Pending JobResult = iota
+	Failure
 	Success
 )
 
@@ -24,6 +25,6 @@ func (jobResult JobResult) String() string {
 		case Failure:
 			return "failure"
 		default:
-			return "unknown"
+			return "pending"
 	}
 }

@@ -22,4 +22,7 @@ func NewJob(w http.ResponseWriter, r *http.Request) {
 
 	// Add the job to the jobs channel
 	JOBS <- job
+
+	// Return a success message
+	w.Write([]byte("Job created"))
 }
