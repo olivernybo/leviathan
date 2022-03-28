@@ -2,16 +2,12 @@ package api
 
 import (
 	"net/http"
+	"encoding/json"
 	"cron-manager/cron"
 )
 
 // Route to create a new cron job
 func NewJob(w http.ResponseWriter, r *http.Request) {
-	// If the request is not a POST, return an error
-	if r.Method != "POST" {
-		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
-		return
-	}
 	
 	// Create a new job
 	// todo validate the request body
@@ -23,6 +19,6 @@ func NewJob(w http.ResponseWriter, r *http.Request) {
 	// Add the job to the jobs channel
 	JOBS <- job
 
-	// Return a success message
-	w.Write([]byte("Job created"))
+	// Return a success message with the job
+	json.NewEncoder(w).Encode(JobResponse{job, Response{"Job added"}})
 }

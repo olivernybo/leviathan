@@ -2,12 +2,12 @@ package cron
 
 // Job represents a cron job
 type Job struct {
-	Name string
-	Command string
-	Schedule string
-	Output string
-	Error string
-	Result JobResult
+	Name string `json:"name"`
+	Command string `json:"command"`
+	Schedule string `json:"schedule"`
+	Output string `json:"output"`
+	Error string `json:"error"`
+	Result JobResult `json:"result"`
 }
 
 type JobResult uint16

@@ -1,8 +1,9 @@
 package api
 
 import (
-	"cron-manager/cron"
 	"net/http"
+	"cron-manager/cron"
+	"github.com/gorilla/mux"
 )
 
 // Global variables
@@ -14,10 +15,13 @@ func Initialize(jobs chan<- cron.Job, results <-chan cron.Job) {
 	// Set global variables
 	JOBS = jobs
 	RESULTS = results
+	
+	// Create a new router
+	router := mux.NewRouter()
 
-	// Setup routes
-	http.HandleFunc("/newJob", NewJob)
+	// Add routes
+	router.HandleFunc("/jobs", NewJob).Methods("POST")
 
-	// Start http server
-	http.ListenAndServe(":8090", nil)
+	// Start the server
+	http.ListenAndServe(":8090", Middleware(router))
 }
