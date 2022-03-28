@@ -1,7 +1,7 @@
 package api
 
 import (
-	"cron-manager/cron"
+	"cron-manager/cron/models"
 )
 
 type Response struct {

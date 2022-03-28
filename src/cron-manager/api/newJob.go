@@ -3,7 +3,8 @@ package api
 import (
 	"net/http"
 	"encoding/json"
-	"cron-manager/cron"
+	"cron-manager/cron/models"
+	"cron-manager/api/models"
 )
 
 // Route to create a new cron job
@@ -20,5 +21,10 @@ func NewJob(w http.ResponseWriter, r *http.Request) {
 	JOBS <- job
 
 	// Return a success message with the job
-	json.NewEncoder(w).Encode(JobResponse{job, Response{"Job added"}})
+	json.NewEncoder(w).Encode(api.JobResponse{
+		Job: job,
+		Response: api.Response{
+			Message: "Job added",
+		},
+	})
 }

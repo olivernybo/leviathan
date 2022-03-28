@@ -2,7 +2,7 @@ package api
 
 import (
 	"net/http"
-	"cron-manager/cron"
+	"cron-manager/cron/models"
 	"github.com/gorilla/mux"
 )
 

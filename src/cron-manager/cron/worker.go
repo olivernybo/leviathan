@@ -5,10 +5,11 @@ import (
 	"fmt"
 	"os/exec"
 	"strings"
+	"cron-manager/cron/models"
 )
 
 // Worker that runs the cron job
-func Worker(jobs <-chan Job, results chan<- Job) {
+func Worker(jobs <-chan cron.Job, results chan<- cron.Job) {
 	// Continuously read jobs from the jobs channel
 	for job := range jobs {
 		fmt.Println("worker: received job", job)
@@ -26,9 +27,9 @@ func Worker(jobs <-chan Job, results chan<- Job) {
 		if err != nil {
 			fmt.Println("worker: error running command")
 			job.Error = err.Error()
-			job.Result = Failure
+			job.Result = cron.Failure
 		} else {
-			job.Result = Success
+			job.Result = cron.Success
 		}
 
 		job.Output = out.String()

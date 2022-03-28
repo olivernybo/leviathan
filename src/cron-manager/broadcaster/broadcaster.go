@@ -2,7 +2,7 @@ package broadcaster
 
 import (
 	"fmt"
-	"cron-manager/cron"
+	"cron-manager/cron/models"
 )
 
 // Initialize the broadcaster (results channel)
