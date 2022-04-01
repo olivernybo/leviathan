@@ -30,10 +30,11 @@ func NewJob(w http.ResponseWriter, r *http.Request) {
 	// todo validate the schedule format
 	
 	// Create a new job
-	job := cron.Job{}
-	job.Name = name
-	job.Command = command
-	job.Schedule = schedule
+	job := cron.Job{
+		Name: name,
+		Command: command,
+		Schedule: schedule,
+	}
 
 	// Add the job to the jobs channel
 	JOBS <- job
