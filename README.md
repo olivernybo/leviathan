@@ -11,8 +11,8 @@ Command for generating mermaid images:
 mmdc -t dark -b #0d1117 -s 5 -i inputfile.mmd -o outputfile.png
 ```
 
-## Domain
-![](documentation/diagrams/domain.png)
+## Services
+![](documentation/diagrams/services.png)
 
 If a service (node) has rounded corners, it indicates it is scalable.
 
