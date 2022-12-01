@@ -9,7 +9,7 @@
   "author": "Oliver Nybo",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3",
+    "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
     "node-fetch": "^3.3.0"
   }
